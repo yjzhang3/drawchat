@@ -6,8 +6,8 @@ To start, run node index.js and the app will run in local host.
 Will see console messages about who is connected and disconnected, also their messages. Also can see the drawings from acorss multiple users.
 
 Credit to:
-https://socket.io/demos/chat/
-https://socket.io/demos/whiteboard/
+-https://socket.io/demos/chat/
+-https://socket.io/demos/whiteboard/
 
 Areas of improvement:
 -incoporate a fadeOut() function that can "erase" automatically the drawing after a short amount of time. But the chat message window will be blocked when fadeOut() is enabled.
