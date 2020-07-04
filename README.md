@@ -1,7 +1,7 @@
 # drawchat
 A socket.io enabled simple webpage that allows multiple users to chat and draw at the same time
 
-To start, run node index.js and the app will run in local host.
+To start in command line: node index.js. Type http://localhost:3000/ in your web browser and it will run on local host. 
 
 Will see console messages about who is connected and disconnected, also their messages. Also can see the drawings from acorss multiple users.
 
