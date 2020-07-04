@@ -3,7 +3,7 @@ A socket.io enabled simple webpage that allows multiple users to chat and draw a
 
 To start in command line: node index.js. Type http://localhost:3000/ in your web browser and it will run on local host. 
 
-Will see console messages about who is connected and disconnected, also their messages. Also can see the drawings from acorss multiple users.
+Will see console messages logging who is connected and disconnected, also their messages. 
 
 Credit to:
 -https://socket.io/demos/chat/
