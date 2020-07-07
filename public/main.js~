@@ -35,21 +35,6 @@ $(function() {
     }
     log(message);
   }
-  
-  const changeEmoji = (data) => {
- 	if (data.avgScore > 0) {
- 	emojiSection.innerHTML = '<img src="https://img.icons8.com/color/96/000000/happy.png">';
- 	}
- 	
- 	if (data.avgScore < 0) {
- 	emojiSection.innerHTML = '<img src="https://img.icons8.com/emoji/96/000000/angry-face.png">';
- 	}
- 	
- 	if (data.avgScore === 0) {
- 	emojiSection.innerHTML = '<img src="https://img.icons8.com/officel/80/000000/neutral-emoticon.png">';
- 	}
- 	}
- 	
 
   // Sets the client's username
   const setUsername = () => {
@@ -255,7 +240,6 @@ $(function() {
   // Whenever the server emits 'new message', update the chat body
   socket.on('new message', (data) => {
     addChatMessage(data);
-    changeEmoji(data)
   });
 
   // Whenever the server emits 'user joined', log it in the chat body
@@ -309,10 +293,7 @@ $(function() {
   canvas.addEventListener('mousedown', onMouseDown, false);
   canvas.addEventListener('mouseup', onMouseUp, false);
   canvas.addEventListener('mouseout', onMouseUp, false);
-    canvas.addEventListener('mousemove', throttle(onMouseMove, 10), false);
-    canvas.addEventListener('fadeout',fadeOut,false);
-    
-    
+  canvas.addEventListener('mousemove', throttle(onMouseMove, 10), false);
   
   //Touch support for mobile devices
   canvas.addEventListener('touchstart', onMouseDown, false);
@@ -328,10 +309,6 @@ $(function() {
 
   window.addEventListener('resize', onResize, false);
   onResize();
-
-
-
-
 
 
   function drawLine(x0, y0, x1, y1, color, emit){
@@ -354,13 +331,10 @@ $(function() {
       y1: y1 / h,
       color: color
     });
-    
-    fadeOut();
   }
 
   function onMouseDown(e){
     drawing = true;
-    
     current.x = e.clientX||e.touches[0].clientX;
     current.y = e.clientY||e.touches[0].clientY;
   }
@@ -406,12 +380,5 @@ $(function() {
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
   }
-
-    function fadeOut() {
-	context.fillStyle = "rgba(255,255,255,0.3)";
-	//context.fillRect(0,0,canvas.width,canvas.height);
-	setTimeout(fadeOut,200);
-	//context.clearRect()
-    }
 
 });

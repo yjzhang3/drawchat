@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Socket.IO Chatboard Example</title>
+  <title>Socket.IO Chat Example</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -11,15 +11,7 @@
       <div class="chatArea">
         <ul class="messages"></ul>
       </div>
-      <img id="emojiSection"></div>
       <input class="inputMessage" placeholder="Type here..."/>
-		<div class="colors">
-	    <div class="color black"></div>
-	    <div class="color red"></div>
-	    <div class="color green"></div>
-	    <div class="color blue"></div>
-	    <div class="color yellow"></div>
- 	 </div>
     </li>
     <li class="login page">
       <div class="form">
@@ -27,11 +19,7 @@
         <input class="usernameInput" type="text" maxlength="14" />
       </div>
     </li>
- 
   </ul>
-  <canvas class="whiteboard" ></canvas>
-
-
 
   <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
   <script src="/socket.io/socket.io.js"></script>

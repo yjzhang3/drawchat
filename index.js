@@ -4,11 +4,19 @@ var http = require('http').createServer(app);
 var io = require('socket.io')(http);
 var path = require('path')
 var port = process.env.PORT || 3000 
+var Sentiment = require('sentiment');
 
 /*app.get('/', (req, res) => {
   res.sendFile(__dirname + '/index.html');
 });
 */
+
+var numMess = 0;
+var numPos = 0;
+var numNeg = 0;
+var numNeu = 0;
+var totalScore = 0;
+var avgScore = 0;
 
 app.use(express.static(path.join(__dirname,'public')));
 
@@ -31,6 +39,18 @@ io.on('connection', (socket) => {
 	    message:data
 	});
 	console.log('message:' + data);
+	
+	var sentiment = new Sentiment();
+	
+	var result = sentiment.analyze(data);
+
+	++numMess;
+	totalScore += result.score
+	avgScore = totalScore/numMess;
+	
+	console.log('current sentence score: ' + result.score);
+	console.log('average score so far: ' + avgScore);
+
     });
 
     socket.on('add user',(username) => { // when the cliet emits "add user"
