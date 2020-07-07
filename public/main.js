@@ -37,15 +37,19 @@ $(function() {
   }
   
   const changeEmoji = (data) => {
- 	if (data.avgScore > 0) {
+
+  console.log('score: ' + data);
+
+  emojiSection = document.getElementById("emoji");
+ 	if (data > 0) {
  	emojiSection.innerHTML = '<img src="https://img.icons8.com/color/96/000000/happy.png">';
  	}
  	
- 	if (data.avgScore < 0) {
+ 	if (data < 0) {
  	emojiSection.innerHTML = '<img src="https://img.icons8.com/emoji/96/000000/angry-face.png">';
  	}
  	
- 	if (data.avgScore === 0) {
+ 	if (data === 0) {
  	emojiSection.innerHTML = '<img src="https://img.icons8.com/officel/80/000000/neutral-emoticon.png">';
  	}
  	}
@@ -112,7 +116,10 @@ $(function() {
       .addClass(typingClass)
       .append($usernameDiv, $messageBodyDiv);
 
+    var $emojiMessage = $('<div id="emoji" />');
+
     addMessageElement($messageDiv, options);
+    addMessageElement($emojiMessage, options);
   }
 
   // Adds the visual chat typing message
@@ -255,7 +262,9 @@ $(function() {
   // Whenever the server emits 'new message', update the chat body
   socket.on('new message', (data) => {
     addChatMessage(data);
-    changeEmoji(data)
+    changeEmoji(data.value);
+    console.log("json object: " + data);
+    console.log("json value: " + data.value);
   });
 
   // Whenever the server emits 'user joined', log it in the chat body
@@ -415,3 +424,5 @@ $(function() {
     }
 
 });
+
+

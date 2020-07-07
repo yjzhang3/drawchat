@@ -17,6 +17,10 @@ var numNeg = 0;
 var numNeu = 0;
 var totalScore = 0;
 var avgScore = 0;
+var movingAvg = 0;
+var movingCounter = 0;
+var subtotal = 0;
+var duration = 5;
 
 app.use(express.static(path.join(__dirname,'public')));
 
@@ -34,22 +38,40 @@ io.on('connection', (socket) => {
     var addedUser = false;
 
     socket.on('new message',(data) => { // if the client emits 'new message'
-	socket.broadcast.emit('new message',{
-	    username:socket.username,
-	    message:data
-	});
-	console.log('message:' + data);
+    
+    	console.log('message:' + data);
 	
 	var sentiment = new Sentiment();
 	
 	var result = sentiment.analyze(data);
 
 	++numMess;
+	
+	if (movingCounter < duration) {
+	    movingCounter++;
+	    subtotal += result.score;
+	    }
+	    
+	if (movingCounter >= duration) {
+	   movingAvg = subtotal/duration;
+	   movingCounter = 0;
+	   subtotal = 0;
+	   
+	   }
+	   
 	totalScore += result.score
 	avgScore = totalScore/numMess;
 	
 	console.log('current sentence score: ' + result.score);
 	console.log('average score so far: ' + avgScore);
+	console.log('moving average is: ' + movingAvg);
+	
+	socket.emit('new message',{
+	    username:socket.username,
+	    message:data,
+	    value: movingAvg
+	});
+	
 
     });
 
