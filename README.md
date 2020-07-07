@@ -17,4 +17,8 @@ Areas of improvement:
 
 - can't get the color palette shown on the webpage.
 
+Now sentiment analysis can be performed on the fly on the live chat data using this feature https://github.com/thisandagain/sentiment#testing
+
+The sentiment score for every sentence and the total average score can be shown in the console. Hopefully they can be displayed on the web as well. 
+
 Enjoy!
