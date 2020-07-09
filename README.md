@@ -1,5 +1,6 @@
 # drawchat
-A socket.io enabled app that allows multiple users to chat and draw at the same time. Meanwhile, a sentiment analysis is performed underneath. 
+A socket.io enabled app that allows multiple users to chat and draw at the same time. Meanwhile, a sentiment analysis is performed underneath.
+This is the winning app for 2020 Wallifornia E-sports category. Thanks to Andrew, Lyle, and Verah. 
 
 To start in command line: node index.js
 
