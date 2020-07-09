@@ -28,6 +28,6 @@ Areas of improvement:
 
 Now sentiment analysis can be performed on the fly on the live chat data using this feature https://github.com/thisandagain/sentiment#testing
 
-The sentiment score for every sentence and the total average score, along with moving average (average for every five messages) can be shown in the console. An emoji icon will represent the sentiment (happy, sad, or neutral).
+The sentiment score for every sentence and the total average score, along with moving average (average for every five messages) can be shown in the console and on the webpage! An emoji icon will indicate the sentiment (happy, sad, or neutral).
 
 Happy chatting/drawing!
