@@ -67,10 +67,12 @@ io.on('connection', (socket) => {
 	console.log('moving average is: ' + movingAvg);
 	
 	socket.broadcast.emit('new message',{
-	    username:socket.username,
+
+	username:socket.username,
 	    message:data,
 		value: movingAvg,
-		totalValue: avgScore
+		secondvalue: avgScore,
+		thirdvalue: result.score
 	});
 	
 

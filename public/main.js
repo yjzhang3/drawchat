@@ -36,6 +36,8 @@ $(function() {
     log(message);
   }
   
+
+
   const changeEmoji = (data) => {
 
   console.log('score: ' + data);
@@ -52,8 +54,10 @@ $(function() {
  	if (data === 0) {
  	emojiSection.innerHTML = '<img src="https://img.icons8.com/officel/80/000000/neutral-emoticon.png">';
  	}
- 	}
- 	
+   }
+   
+
+   
 
   // Sets the client's username
   const setUsername = () => {
@@ -118,8 +122,10 @@ $(function() {
 
     var $emojiMessage = $('<div id="emoji" />');
 
+
     addMessageElement($messageDiv, options);
     addMessageElement($emojiMessage, options);
+
   }
 
   // Adds the visual chat typing message
@@ -259,12 +265,29 @@ $(function() {
     addParticipantsMessage(data);
   });
 
+  socket.on('new message', (movingAvg) => {
+    document.getElementById("movingAvg").innerHTML= movingAvg.value;
+    
+  });
+  
+  
+  socket.on('new message', (avgScore) => {
+    document.getElementById("avgScore").innerHTML= avgScore.secondvalue;
+    
+  });
+
+  socket.on('new message', (previous) => {
+    document.getElementById("previous").innerHTML= previous.thirdvalue;
+    
+  });
+
   // Whenever the server emits 'new message', update the chat body
   socket.on('new message', (data) => {
     addChatMessage(data);
     changeEmoji(data.value);
     console.log("json object: " + data);
     console.log("json value: " + data.value);
+    console.log("json :")
   });
 
   // Whenever the server emits 'user joined', log it in the chat body
@@ -424,5 +447,6 @@ $(function() {
     }
 
 });
+
 
 
